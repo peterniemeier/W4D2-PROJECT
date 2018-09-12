@@ -1,0 +1,27 @@
+<h1>Detailed Profile</h1> 
+
+<table> 
+  <thead> 
+    <%= @cat.name %>
+    <br></br>
+  </thead>
+  <body>
+    <tr>
+           <td>Birthday</td>
+           <td>  <%= @cat.birth_date %></td>
+       </tr>
+     <tr>
+          <td>Color</td>
+          <td>  <%= @cat.color %></td>
+      </tr>
+      <tr>
+         <td>gender</td>
+         <td>  <%= @cat.sex %></td>
+      </tr>
+      <tr>
+         <td>Descript</td>
+         <td>  <%= @cat.description %></td>
+     </tr>
+  </body>
+</table>
+<a href="<%=edit_cat_url%>">Update <%= @cat.name %></a>

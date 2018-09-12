@@ -1,0 +1,49 @@
+
+<% if @cat.persisted? %>
+  <% editing = true %>
+  <% variable = cat_url(@cat) %>
+  <% button = 'Commit edit to ' + @cat.name %>
+  <% selected = @cat.color %>
+  <% checked = 'checked' %>
+<% else %>
+<% variable = cats_url %>
+<% button = 'Create new Cat' %>
+<% selected = '-- Select Color --' %>
+<% end %>
+
+<form name='' action ='<%=variable%>' method='post'>
+  <% if editing %>
+  <input type='hidden' name='_method' value='patch'>
+  <% end %>
+  Name
+  <input type="text" name='cat[name]' value='<%= @cat.name %>'>
+  <br> 
+  Birthday
+  <input type="date" name="cat[birth_date]" value='<%= @cat.birth_date %>'>
+  <br>
+  
+  Sex
+  <br>
+  <label>
+    <input type="radio" name="cat[sex]" value="M" <%= checked if @cat.sex == 'M' %> >Male<br>
+  </label>
+  <label>
+    <input type="radio" name="cat[sex]" value="F" <%= checked if @cat.sex == 'F' %> >Female<br>
+  </label>
+  <br>
+  Color
+  <select name='cat[color]'>
+    <option value = '<%= selected %>' selected ><%= selected %></option>
+    <option value="black">black</option>
+    <option value="brown">brown</option>
+    <option value="white">white</option>
+    <option value="grey">grey</option>
+    <option value="orange">orange</option>
+    <option value="blue">blue</option>
+  </select>
+  <br>
+  <textarea rows="4" cols="50" name="cat[description]">
+    <%= @cat.description %></textarea>
+  <br>
+  <input type="submit" value="<%= button %>">
+</form>
